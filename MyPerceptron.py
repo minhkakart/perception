@@ -5,15 +5,15 @@ class MyPerceptron:
 
     ## Hàm Khởi tạo
     def __init__(self, xTrain, yTrain) -> None:
-        self.lenXY = len(xTrain)        ## Lưu số lượng bộ dữ liệu đầu vào
-        if self.lenXY != len(yTrain):           ## Nếu số lượng bộ dữ liệu đầu vào khác số lượng nhãn thì báo lỗi 
+        self.lenXY = len(xTrain)                    ## Lưu số lượng bộ dữ liệu đầu vào
+        if self.lenXY != len(yTrain):               ## Nếu số lượng bộ dữ liệu đầu vào khác số lượng nhãn thì báo lỗi 
             raise ValueError('Parameters is not valid!')
-        self.X = numpy.array(xTrain)        ## Lưu tập dữ liệu đầu vào
+        self.X = numpy.array(xTrain)                ## Lưu tập dữ liệu đầu vào
         self.Y = numpy.array([list(map(lambda x: 1 if x == 1 else -1, yTrain))]).T      ## Lưu tập nhãn dạng ma trận 1 cột
-        self.w = []         ## Khởi tạo bộ trọng số w
+        self.w = []                                 ## Khởi tạo bộ trọng số w
         for i in range(len(self.X[0])):
-            self.w.append(randint(int(-len(self.X[0])), int(len(self.X[0]))))       ## Sinh ngẫu nhiên bộ trọng số w
-        self.w = numpy.array([self.w])      ## Lưu lại bộ trọng số dưới dạng ma trận hàng
+            self.w.append(randint(int(-len(self.X[0])), int(len(self.X[0]))))           ## Sinh ngẫu nhiên bộ trọng số w
+        self.w = numpy.array([self.w])              ## Lưu lại bộ trọng số dưới dạng ma trận hàng
     
     ## Hàm kiểm tra xem nhãn được được đánh dấu đúng hay sai
     def check(self, x, y):
@@ -41,6 +41,6 @@ class MyPerceptron:
 
     ## Hàm dự đoán
     def predict(self, xTest):
-        test = numpy.array(xTest)           ## Lưu tập dữ liệu test
-        res = (test@self.w.T).T[0]          ## Tính toán nhãn dự đoán của tập dữ liệu
-        return list(map(lambda x: 0 if x < 0 else 1, res))      ## Biến đổi tập nhãn dự đoán thành dạng số 0 1 rồi trả về
+        test = numpy.array(xTest)                   ## Lưu tập dữ liệu test
+        res = (test@self.w.T).T[0]                  ## Tính toán nhãn dự đoán của tập dữ liệu
+        return list(map(lambda x: 0 if x < 0 else 1, res))                              ## Biến đổi tập nhãn dự đoán thành dạng số 0 1 rồi trả về
