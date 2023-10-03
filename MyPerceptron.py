@@ -12,7 +12,7 @@ class MyPerceptron:
         self.Y = numpy.array([list(map(lambda x: 1 if x == 1 else -1, yTrain))]).T      ## Lưu tập nhãn dạng ma trận 1 cột
         self.w = []                                 ## Khởi tạo bộ trọng số w
         for i in range(len(self.X[0])):
-            self.w.append(randint(int(-len(self.X[0])), int(len(self.X[0]))))           ## Sinh ngẫu nhiên bộ trọng số w
+            self.w.append(randint(int(-len(self.X[0]*2)), int(len(self.X[0])*2)))           ## Sinh ngẫu nhiên bộ trọng số w
         self.w = numpy.array([self.w])              ## Lưu lại bộ trọng số dưới dạng ma trận hàng
     
     ## Hàm kiểm tra xem nhãn được được đánh dấu đúng hay sai
@@ -31,7 +31,7 @@ class MyPerceptron:
     ## Hàm train mô hình
     def fit(self, eta = 0.001):                     
         count = 0                                   ## Khởi tạo biến đếm số lần lặp
-        while count < 1000:                         ## Sử dụng thuật toán gradient descent để tính đạo hàm hàm mất mát = 0, số lần lặp là 1000
+        while count < 2000:                         ## Sử dụng thuật toán gradient descent để tính đạo hàm hàm mất mát = 0, số lần lặp là 1000
             check, index = self.stop()              ## Lấy về giá trị kiểm tra và chỉ số từ hàm stop()
             if check:                               ## Nếu check là True thì kết thúc
                 return
